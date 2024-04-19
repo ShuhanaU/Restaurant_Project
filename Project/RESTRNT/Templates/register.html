@@ -1,0 +1,81 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+
+
+ {% for x in Home_image %}
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="{{x.img.url}}" alt="Image error" style="opacity: 0.9;">
+      </div>
+{% endfor %} 
+<form method="POST" enctype="multipart/form-data" id="registration_form" class="book_section layout_padding2-top">
+{% csrf_token %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="form_container">
+<h1 style="color: beige;font-family: 'Dancing Script';font-size: 50px;">New Account?</h1>
+
+<div>
+<input type="text" class="form-control" placeholder="Username" name="username">
+</div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-phone-handset"></span> -->
+<input type="text" class="form-control" placeholder="Phone Number" name="phonenumber">
+</div>
+<div class="form-holder">
+  <!-- <span class="lnr lnr-phone-handset"></span> -->
+  <input type="text" class="form-control" placeholder="Place" name="place">
+  </div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-envelope"></span> -->
+<input type="text" class="form-control" placeholder="Mail" name="email">
+</div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-lock"></span> -->
+<input type="password" class="form-control" placeholder="Password" name="password">
+</div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-lock"></span> -->
+<input type="password" class="form-control" placeholder="Confirm Password">
+</div>
+<div class="form-holder">
+  <!-- <span class="lnr lnr-lock"></span> -->
+  <input type="file" class="form-control" placeholder="img" name='image'>
+  </div>
+<div id="reg" style="color: aliceblue;"></div>
+<div class="btn_box">
+  <button type="submit">
+    Register
+    </a>
+  </button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$('#registration_form').on('submit', function(event) {
+          event.preventDefault();
+     var csrfToken = $('[name=csrfmiddlewaretoken]').val();
+     var formData = new FormData(this); // convert form to array
+           $.ajax({
+            type: 'POST',
+            url: 'register',
+            data: formData,
+            processData: false,
+            contentType: false,
+              success: function(response) {
+                  alert(response.message);    
+              },
+              error: function(response) {
+                   alert(response.responseJSON.error);
+        }
+          });
+      });
+</script>
+    <!-- end header section -->
+  {% endblock %}

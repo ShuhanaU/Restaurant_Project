@@ -1,0 +1,80 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+
+
+  
+<form method="POST" enctype="multipart/form-data" id="update-form" class="book_section layout_padding2-top">
+{% csrf_token %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="form_container">
+
+<div>
+<input type="text" class="form-control"  name="username" value="{{log_det1.username}}" >
+</div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-phone-handset"></span> -->
+<input type="text" class="form-control"   name="phonenumber" value={{log_det2.phonenumber}}>
+</div>
+<div class="form-holder">
+  <!-- <span class="lnr lnr-phone-handset"></span> -->
+  <input type="text" class="form-control" placeholder="Place"  name="place" value="{{log_det2.place}}">
+  </div>
+<div class="form-holder">
+<!-- <span class="lnr lnr-envelope"></span> -->
+<input type="text" class="form-control" placeholder="Mail" name="email" value="{{log_det1.email}}">
+</div>
+<div class="form-holder">
+  <img src={{log_det2.image.url}} id='profile-image' width=100px height=100px>
+  <!-- <span class="lnr lnr-envelope"></span> -->
+  <input type="file" class="form-control" id='updateimg' placeholder="Mail" name="image" value="{{log_det1.email}}">
+  </div>
+<div id="reg" style="color: aliceblue;"></div>
+<div class="btn_box">
+  <button type="submit">
+    Update
+    </a>
+  </button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$('#updateimg').on('change', function () {
+  var input = this;
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      // Update the preview image src attribute
+      $('#profile-image').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+});
+$('#update-form').on('submit',function(event){
+  var csrfToken=$('[name=csrfmiddlewaretoken]').val();
+  var formData=new FormData(this);
+  $.ajax({
+    type:'POST',
+    url:'update',
+    data:formData,
+    processData:false,
+    contentType:false,
+    success:function(response){
+        alert("Updated successfully")
+    },
+    error:function(response){
+        alert("Updation failure...")
+    },
+  });
+});
+</script>
+{% endblock %}

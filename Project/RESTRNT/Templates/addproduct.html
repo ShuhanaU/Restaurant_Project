@@ -1,0 +1,83 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+<style>
+    .leftlinkpanel
+    {
+    padding:10px;
+    }
+    .leftlink
+    {
+    padding:5px;
+    border-bottom:1px solid #ccc;
+    }
+    .leftlinkpanel
+    {
+    margin-top:90px;
+    }
+    </style>
+    <div class="hero-area hero-bg">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 offset-lg-2 text-center">
+                        <div class="hero-text">
+                            <div class="hero-text-tablecell">
+                        <div class="breadcrumb-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <section class="vh-90 "
+      style="background-color:#f0f0f0;">
+     
+          
+            <div class="col-8 col-md-8 col-lg-8 col-xl-8" style="margin-bottom:50px; margin-top:50px">
+                
+                  <h3 class="text-uppercase text-center mb-3">Add Product</h3>
+                  <form method='post' enctype="multipart/form-data" style="margin-bottom: 50px;" id="product-form">
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">   
+                      <select name="product_category" class="form-control form-control-lg" style="width:300px;" >
+                        {% for product in allproduct %}
+                        <option value="{{product.id}}">{{product.title}}</option>
+                        {% endfor %}
+                      </select>    
+                      <label class="form-label" for="Catagory"></label>
+                    </div><br>
+                    <div class="form-outline mb-4">
+                      <input type="text" id="form3Example3cg" name="title" class="form-control form-control-lg" placeholder="Product Name" required >
+                      <label class="form-label" for="title"></label>
+                    </div>
+    
+                    <div class="form-outline mb-4">
+                      <input type="number"  name="price" placeholder="Product Price" class="form-control form-control-lg" required >
+                      <label class="form-label" for="price" ></label>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <textarea name="description" class="form-control form-control-lg" placeholder="Description"></textarea>
+                      <label class="form-label" for="Description"></label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <textarea name="desc2" class="form-control form-control-lg" placeholder="Product category"></textarea>
+                        <label class="form-label" for="Description"></label>
+                      </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="Image"><b>Product Image</b></label>
+                      <input type="file" class="form-control form-control-lg" name="image"/>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Post Product</button>
+                    </div>
+                    <div id="product_added" style="font-size: large; text-align: center;"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

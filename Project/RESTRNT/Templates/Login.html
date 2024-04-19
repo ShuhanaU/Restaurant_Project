@@ -1,0 +1,73 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+    <!-- end header section -->
+    <section class="about_section layout_padding">
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+      <h2 >Already have an Account?</h2>
+      </div>
+      </div>
+      <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-5">
+      <div class="login-wrap p-4 p-md-5">
+      <div class="icon d-flex align-items-center justify-content-center">
+      
+      </div>
+      <h3 class="text-center mb-4" style="color: #ffbe33;">Sign In</h3>
+      <form method="POST" id="login_data" enctype="multipart/form" class="login-form">
+      {% csrf_token %}
+      <div class="form-group">
+      <input type="text" class="form-control rounded-left" placeholder="Username" name="username"required>
+      </div>
+      <div class="form-group d-flex">
+      <input type="password" class="form-control rounded-left" placeholder="Password" name="password" required>
+      </div>
+      <div class="form-group">
+      <button type="submit" class="form-control btn btn-primary rounded submit px-3" style="background-color:#ffbe33;">
+       Login</button>
+      </div>
+      <div class="form-group d-md-flex">
+      <div class="w-50">
+      <label class="checkbox-wrap checkbox-primary" >Remember Me
+      <input type="checkbox" checked>
+      <span class="checkmark"></span>
+      </label>
+      </div>
+      <div class="w-50 text-md-right">
+      <a href="#" style="color: aliceblue;">Forgot Password</a>
+      </div>
+      </div>
+      </form>
+      <div id='log-in'></div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </section>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+      $(document).ready(function() {
+          $('#login_data').submit(function(e) { // Change to target forms with class "form"
+              e.preventDefault();
+              
+              $.ajax({
+                  type: 'POST',
+                  url: 'userLogin', // Update with your URL
+                  data: $(this).serialize(),
+                  success: function(response) {
+                      alert(response.message); // Show success message
+                      window.location.href=response.redirect;
+                      // You can optionally redirect the user or perform other actions here
+                  },
+                  error: function(xhr, status, error) {
+                      alert('Error: ' + xhr.responseText); // Show error message if any
+                  }
+              });
+          });
+      });
+      </script>
+           
+
+            {% endblock %}

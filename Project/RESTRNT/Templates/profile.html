@@ -1,0 +1,67 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+
+<section class="about_section layout_padding">
+  <div class="container  ">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+  {% for abt in about_section %}
+            <img src="{{abt.img.url}}" alt="jkgjkhlk">
+          {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-6 ">
+      <div class="detail-box">
+    <div class="heading_container">
+      <img src={{log_det2.image.url}} width=100px height=100px class="img-radius" alt="User-Profile-Image">
+      <h2>
+        Profle Information
+      </h2>
+<div class="col-xl-6 col-md-12">
+  
+    <div class="col-md-6">
+      <div class="form_container">                                                         
+      </div>
+    </div>
+  </div>
+      </div>
+   </div>
+  <div class="col-sm-8">
+  <div class="card-block">
+    <div class="row">
+   <div class="col-sm-8">
+ <p class="m-b-20 f-w-600">Name</p>
+   <h6 class="text-muted f-w-400">{{log_det1.username}}</h6>
+  </div>
+  <div class="col-sm-8">
+  <p class="m-b-20 f-w-600">Email</p>
+  <h6 class="text-muted f-w-400">{{log_det1.email}}</h6>
+   </div>
+<div class="col-sm-8">
+  <p class="m-b-10 f-w-600">Phone</p>
+   <h6 class="text-muted f-w-400">{{log_det2.phonenumber}}</h6>
+  </div>
+   <div class="col-sm-8">
+   <p class="m-b-10 f-w-600">Place</p>
+    <h6 class="text-muted f-w-400">{{log_det2.place}}</h6>
+      </div>
+   <div class="col-sm-8">
+    <p class="m-b-10 f-w-600">Ordered items</p>
+      <h6 class="text-muted f-w-400">-----------</h6>
+         </div>
+            </div>
+            <div class="btn_box">
+              <a href="{% url "update" %}">
+                Update
+                </a>
+              </button>
+            </div>
+             </div>
+               </div>
+              </div>
+                  </section>
+    <!-- end header section -->
+  
+  {% endblock %}

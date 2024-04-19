@@ -1,0 +1,42 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+
+
+
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+   
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{{about_section.img.url}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{about_section.title}}
+              </h2>
+            </div>
+            <p>
+              {{about_section.description}}
+            </p>
+           
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+  <!-- end about section -->
+
+  <!-- footer section -->
+  

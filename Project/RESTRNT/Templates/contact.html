@@ -1,0 +1,92 @@
+{% extends "Base.html" %}
+{%load static%}
+{% block content %}
+
+
+<section class="book_section layout_padding2">
+<div class="container">
+<div class="row justify-content-center">
+<h2 class="heading-section">Contact Form </h2>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="row no-gutters">
+<div class="col-md-6 d-flex align-items-stretch">
+<div class="contact-wrap w-100 p-md-5 p-4 py-5">
+<form method="POST" enctype="multipart/form-data" class="book_section layout_padding2-top">
+    {% csrf_token %}
+<h3 class="heading-section">Write us</h3>
+<div class="row">
+<div class="col-md-12">
+<div class="form-group">
+<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+</div>
+</div>
+<div class="col-md-12">
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<textarea name="message" class="form-control" id="message" cols="30" rows="6" placeholder="Message"></textarea>
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<input type="submit" style="background-color: #ffbe33;" value="Send Message" class="btn btn-primary">
+<div class="submitting" id="message"></div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="col-md-6 d-flex align-items-stretch">
+<div class="info-wrap w-100 p-md-5 p-4 py-5 img">
+<h3 >Contact information</h3>
+<p class="mb-4">We're open for any suggestion or just to have a chat</p>
+<div class="dbox w-100 d-flex align-items-start">
+<div class="icon d-flex align-items-center justify-content-center">
+<span class="fa fa-map-marker"></span>
+</div>
+<div class="text pl-3">
+<p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+</div>
+</div>
+<div class="dbox w-100 d-flex align-items-center">
+<div class="icon d-flex align-items-center justify-content-center">
+<span class="fa fa-phone"></span>
+</div>
+<div class="text pl-3">
+<p><span>Phone:</span> <a href="tel://1234567920" style="color: #ffbe33;">+01 1234567890</a></p>
+</div>
+</div>
+<div class="dbox w-100 d-flex align-items-center">
+<div class="icon d-flex align-items-center justify-content-center">
+<span class="fa fa-paper-plane"></span>
+</div>
+<div class="text pl-3">
+<p><span>Email:</span> <a href=" demo@gmail.com"><span class="__cf_email__" data-cfemail="b6dfd8d0d9f6cfd9c3c4c5dfc2d398d5d9db" style="color: #ffbe33;"> demo@gmail.com</span></a></p>
+</div>
+</div>
+<div class="dbox w-100 d-flex align-items-center">
+<div class="icon d-flex align-items-center justify-content-center">
+<span class="fa fa-globe"></span>
+</div>
+<div class="text pl-3">
+<p><span>Website</span> <a href="{% url "index" %}" style="color: #ffbe33;">Takeitcheesy.com</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
